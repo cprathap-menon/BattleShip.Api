@@ -6,7 +6,8 @@
     <members>
         <member name="M:BattleShip.Api.Controllers.BoardController.CreateBoardAsync">
             <summary>
-            Create and initialise battleship 10x10 game board, Each tile on the board has a name and by default it is set to "-" meaning unoccupied
+            Creates and initialise battleship 10x10 game board, Each tile on the board has a name and by default it is set to "-" meaning unoccupied
+            Once a ship is placed on a tile, tile name will become ship name, once tile takes a hit tile name changes to x
             </summary>
         </member>
         <member name="M:BattleShip.Api.Controllers.BoardController.AddShipsAsync(BattleShip.Api.Models.CreateShipRequest)">
@@ -16,6 +17,12 @@
             </summary>
             <param name="request">CreateShipRequest</param>
             <returns>true/false</returns>
+        </member>
+        <member name="M:BattleShip.Api.Controllers.BoardController.Delete">
+            <summary>
+            Clears existing board from cache.
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:BattleShip.Api.Controllers.GameController.HitAsync(System.Int32,System.Int32)">
             <summary>
@@ -28,12 +35,6 @@
         <member name="M:BattleShip.Api.Controllers.HealthController.HealthCheck">
             <summary>
             Used for Health check
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:BattleShip.Api.Controllers.HealthController.Pingdom">
-            <summary>
-            Used to make sure all of the resources are available and responsive
             </summary>
             <returns></returns>
         </member>

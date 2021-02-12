@@ -12,7 +12,7 @@ namespace BattleShip.Api.Services
 {
     public interface IBoardService
     {
-        Task<Tile[,]> CreateBoardAsync();
+        Task<bool> CreateBoardAsync();
 
         Task<bool> AddShipAsync(CreateShipRequest request);
 
@@ -31,15 +31,15 @@ namespace BattleShip.Api.Services
         }
 
 
-        public Task<Tile[,]> CreateBoardAsync()
+        public Task<bool> CreateBoardAsync()
         {
-
+            // Check if a board already exists in the cache
             var cachedBoardExists = _memoryCache.TryGetValue<Tile[,]>(CacheKey, out var cachedBoard);
 
             if (cachedBoardExists)
-                throw new BadRequestException("Board already exists, If you want to create a new board you will have to delete existing board.");
+                throw new BadRequestException("Board already exists, If you want to create a new board you will have to hit delete endpoint to clear existing board.");
 
-
+            // Create board
             var boardSize = 10;
             var board = new Tile[boardSize, boardSize];
 
@@ -51,6 +51,7 @@ namespace BattleShip.Api.Services
                 }
             }
 
+            // Add it to cache
             var cacheExpirationOptions =
                 new MemoryCacheEntryOptions
                 {
@@ -61,11 +62,12 @@ namespace BattleShip.Api.Services
             _memoryCache.GetOrCreate(CacheKey, cacheEntry => board);
 
 
-            return Task.FromResult(board);
+            return Task.FromResult(true);
         }
 
         public async Task<bool> AddShipAsync(CreateShipRequest request)
         {
+            // Add ship to board based on it orientation and size
             var board = await  GetBoardAsync();
             for (var i = 0; i < request.Size; i++)
             {

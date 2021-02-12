@@ -26,17 +26,19 @@ namespace BattleShip.Api.Controllers
 
 
         /// <summary>
-        /// Create and initialise battleship 10x10 game board, Each tile on the board has a name and by default it is set to "-" meaning unoccupied
+        /// Creates and initialise battleship 10x10 game board, Each tile on the board has a name and by default it is set to "-" meaning unoccupied
+        /// Once a ship is placed on a tile, tile name will become ship name, once tile takes a hit tile name changes to x
         /// </summary>
         [HttpPost]
         [Route("board")]
         [ValidateModelFilter]
         [AllowAnonymous]
-        [ProducesResponseType(typeof(Tile[,]), 200)]
+        [ProducesResponseType(typeof(string), 200)]
         public async Task<IActionResult> CreateBoardAsync()
         {
-            var board = await _boardService.CreateBoardAsync();
-            return Ok(board);
+            var response = await _boardService.CreateBoardAsync();
+            var responseMessage = response ? "Board created!" : "Board creation failed!";
+            return Ok(responseMessage);
         }
 
 
@@ -55,6 +57,21 @@ namespace BattleShip.Api.Controllers
         {
             var response = await _boardService.AddShipAsync(request);
             return Ok(response);
+        }
+
+
+        /// <summary>
+        /// Clears existing board from cache.
+        /// </summary>
+        /// <returns></returns>
+        [Route("board")]
+        [HttpDelete]
+        [AllowAnonymous]
+        [ProducesResponseType(typeof(bool), 200)]
+        public IActionResult Delete()
+        {
+            _boardService.ClearBoardFromCache();
+            return Ok(true);
         }
     }
 }

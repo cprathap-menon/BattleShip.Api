@@ -24,22 +24,22 @@ namespace BattleShip.Api.Services
 
         public async Task<string> HitAsync(int x, int y)
         {
+            // Hits x & y coordinate on the board
             var board = await _boardService.GetBoardAsync();
-
             try
             {
                 if (x > board.GetLength(0) && y > board.GetLength(1))
                     throw new Exception("Invalid board location");
 
                 if (board[x, y].IsHit || board[x, y].Name == "-")
-                    return "Miss";
+                    return "Miss!";
 
                 board[x, y].IsHit = true;
                 board[x, y].Name = "x";
 
                 return "Hit!";
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return "Miss!";
             }
