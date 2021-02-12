@@ -1,3 +1,5 @@
+## BattleShip: State Tracker API
+
 BattleShip State tracker API as the name suggests works as a state tracker for BattleShip game.
 
 This API mainly supports 3 endpoints,
@@ -43,9 +45,9 @@ This project uses the following third party nuget packages,
 
 * At solution level (BattleShip.Api in this case) right click and Rebuild Solution, this will restore and build all the dependencies.
 
-## API Documentation
+## API Documentation / Application URL
 
-* https://localhost:44300/api/docs/index.html
+* http://battleshipapi-911263367.ap-southeast-2.elb.amazonaws.com/api/docs/index.html
 
 
 ## Assumptions and trade-offs
