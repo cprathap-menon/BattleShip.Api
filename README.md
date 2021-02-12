@@ -1,5 +1,7 @@
 ## BattleShip: State Tracker API
 
+![alt text](https://www.wikihow.com/images/thumb/0/0a/Play-Battleship-Step-6-Version-2.jpg/aid88034-v4-728px-Play-Battleship-Step-6-Version-2.jpg)
+
 BattleShip State tracker API as the name suggests works as a state tracker for BattleShip game.
 
 This API mainly supports 3 endpoints,
