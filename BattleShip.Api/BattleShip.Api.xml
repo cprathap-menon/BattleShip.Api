@@ -25,5 +25,17 @@
             <param name="y">Y Co-Ordinate</param>
             <returns>String Hit /Miss</returns>
         </member>
+        <member name="M:BattleShip.Api.Controllers.HealthController.HealthCheck">
+            <summary>
+            Used for Health check
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BattleShip.Api.Controllers.HealthController.Pingdom">
+            <summary>
+            Used to make sure all of the resources are available and responsive
+            </summary>
+            <returns></returns>
+        </member>
     </members>
 </doc>
