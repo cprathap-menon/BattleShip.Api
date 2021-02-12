@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BattleShip.Api</name>
+    </assembly>
+    <members>
+        <member name="M:BattleShip.Api.Controllers.BoardController.CreateBoardAsync">
+            <summary>
+            Create and initialise battleship 10x10 game board, Each tile on the board has a name and by default it is set to "-" meaning unoccupied
+            </summary>
+        </member>
+        <member name="M:BattleShip.Api.Controllers.BoardController.AddShipsAsync(BattleShip.Api.Models.CreateShipRequest)">
+            <summary>
+            Place a new ship on the board, you need to pass x/y coordinates and the orientation in which ship will be placed vertical/horizontal.
+            You need to also pass in the size of the ship which would determine the number of tiles the ship will occupy on the board.
+            </summary>
+            <param name="request">CreateShipRequest</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="M:BattleShip.Api.Controllers.GameController.HitAsync(System.Int32,System.Int32)">
+            <summary>
+            This is the endpoint that players will call for hitting a co-ordinate within battle-ship board. On a successful hit, this endpoint returns "Hit!" otherwise "Miss!"
+            </summary>
+            <param name="x">X Co-ordinate</param>
+            <param name="y">Y Co-Ordinate</param>
+            <returns>String Hit /Miss</returns>
+        </member>
+    </members>
+</doc>
