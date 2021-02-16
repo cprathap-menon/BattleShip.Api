@@ -74,7 +74,7 @@ namespace BattleShip.Api.Services
                 try
                 {
                     if (board[request.XCoordinate, request.YCoordinate].IsHit || board[request.XCoordinate, request.YCoordinate].Name != "-")
-                        throw new Exception("Cannot Place ship, invalid position!");
+                        throw new BadRequestException("Cannot place ship, invalid position!");
 
                     if (request.XCoordinate < board.GetLength(0) && request.YCoordinate < board.GetLength(1))
                     {
@@ -112,7 +112,7 @@ namespace BattleShip.Api.Services
             var cachedBoardExists = _memoryCache.TryGetValue<Tile[,]>(CacheKey, out var cachedBoard);
 
             if (!cachedBoardExists)
-                throw  new Exception("No board exists, please create a new board!");
+                throw  new BadRequestException("No board exists, please create a new board!");
 
             return Task.FromResult(cachedBoard);
         }

@@ -32,7 +32,7 @@ namespace BattleShip.Api
             var containerId = Configuration.GetValue<string>("HOSTNAME") ?? "N/A";
             var env = Configuration.GetValue<string>("ASPNETCORE_ENVIRONMENT");
             Configuration.Bind("AppSettings", appSettings);
-            new ApiBootstrapper().Bootstrap(builder, appSettings, containerId, env);
+            new ApiBootstrapper().Bootstrap(builder, containerId, env);
         }
 
         public void ConfigureServices(IServiceCollection services)

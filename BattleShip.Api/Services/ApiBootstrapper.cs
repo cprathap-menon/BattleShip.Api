@@ -14,11 +14,11 @@ namespace BattleShip.Api.Services
 {
     public interface IApiBootstrapper
     {
-        void Bootstrap(ContainerBuilder containerBuilder, AppSettings appSettings, string containerId, string env);
+        void Bootstrap(ContainerBuilder containerBuilder,string containerId, string env);
     }
     public class ApiBootstrapper : IApiBootstrapper
     {
-        public void Bootstrap(ContainerBuilder containerBuilder, AppSettings appSettings, string containerId, string env)
+        public void Bootstrap(ContainerBuilder containerBuilder, string containerId, string env)
         {
             var options = new MemoryCacheOptions();
             var cache = new MemoryCache(options);
